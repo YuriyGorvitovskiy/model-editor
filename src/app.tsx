@@ -55,34 +55,27 @@ export class App extends React.Component<{}, IState > {
             </Typography>
           </Toolbar>
         </AppBar>
-        <Drawer variant="permanent" anchor="left" 
-                className={this.state.open ? "drawer-open" : "drawer-close"} 
-                classes={{paper: this.state.open ? "drawer-paper-open" : "drawer-paper-close"}} 
-                open={this.state.open}>
-          <div id="drawer-toolbar-spacer"/>
-          <div style={{display: 'flex',  height: '100%'}} >
-            <List component="nav" style={{width: '64px'}} >
-              <ListItem button aria-label="Tasks" onClick={()=>this.setState({open: !this.state.open})}>
-                <ListItemIcon>
-                  <Icon>list</Icon>
-                </ListItemIcon>
-              </ListItem>
-            </List>
-            <div style={{ borderLeft: '1px solid lightgrey', padding: '0', height: '100%' }} ></div>
-            <List component="nav">
-            { 
-              this.state.filenames.map((filename) => (
-                <ListItem button selected={filename === this.state.selected} onClick={() => this.onSelectFile(filename)} >
-                  <ListItemText primary={filename.split('.').slice(0, -1).join('.')} />
-                </ListItem>))
-            }
-            </List>
-          </div>
-        </Drawer>
-        <main className="content">
-          <pre>{this.state.content}</pre>
+        <main>
+          <List component="nav" >
+            <ListItem button aria-label="Tasks" onClick={()=>this.setState({open: !this.state.open})}>
+              <ListItemIcon>
+                <Icon>list</Icon>
+              </ListItemIcon>
+            </ListItem>
+          </List>
+          <List component="nav" style={{display: this.state.open ? "block" : "none" }}>
+          { 
+            this.state.filenames.map((filename) => (
+              <ListItem key={filename} button selected={filename === this.state.selected} onClick={() => this.onSelectFile(filename)} >
+                <ListItemText primary={filename.split('.').slice(0, -1).join('.')} />
+              </ListItem>))
+          }
+          </List>
+          <article>
+            <pre>{this.state.content}</pre>
+          </article>
         </main>
-      </div>
+      </div>          
     );
   }
 

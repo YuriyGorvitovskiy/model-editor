@@ -9,7 +9,7 @@ function createWindow() {
     // and load the index.html of the app.
     win.loadFile("./src/app.html");
 
-    // win.webContents.openDevTools();
+    win.webContents.openDevTools();
 }
 
 ipcMain.on("request-model-files", (event, message) => loadModelFiles(win));
