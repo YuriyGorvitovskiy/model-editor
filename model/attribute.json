@@ -1,0 +1,16 @@
+{
+    "id": {
+        "type": "string"
+    },
+    "class": {
+        "type": "reference",
+        "target": "class"
+    },
+    "type": {
+        "type": "string"
+    },
+    "target": {
+        "type": "reference",
+        "target": "class"
+    }
+}

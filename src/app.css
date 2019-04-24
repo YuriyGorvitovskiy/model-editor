@@ -1,0 +1,23 @@
+#app-bar { 
+    z-index: 1201;
+}
+
+.drawer-close {
+    width: 64px; 
+}
+
+#drawer-toolbar-spacer {
+    height: 64px;
+}
+
+.drawer-paper-close {
+    width: 64px;
+}
+
+
+.content {
+    flex-grow: 1;
+    padding: 8px;
+    margin-top: 64px;
+    margin-left: 64px;
+}

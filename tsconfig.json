@@ -1,0 +1,13 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "declaration": true,
+        "jsx": "react",
+        "module": "commonjs",
+        "outDir": "./build/js",
+        "strict": false,
+        "target": "es2017"
+    },
+    "include": ["src/**/*.ts", "src/app.tsx"],
+    "exclude": ["node_modules", "**/*.test.ts"]
+}

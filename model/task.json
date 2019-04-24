@@ -1,0 +1,29 @@
+{
+    "id": {
+        "type": "string"
+    },
+    "name": {
+        "type": "string"
+    },
+    "assignee": {
+        "type": "reference",
+        "target": "user"
+    },
+    "subject_type": {
+        "type": "reference",
+        "target": "class"
+    },
+    "subject": {
+        "type": "reference",
+        "target": "any"
+    },
+    "description": {
+        "type": "text"
+    },
+    "due": {
+        "type": "timestamp"
+    },
+    "state": {
+        "type": "string"
+    }
+}
