@@ -1,6 +1,9 @@
 
 import AppBar from '@material-ui/core/AppBar';
 import Avatar from '@material-ui/core/Avatar';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import Icon from '@material-ui/core/Icon';
@@ -8,6 +11,11 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { ipcRenderer } from "electron";
@@ -45,6 +53,13 @@ export class App extends React.Component<{}, IState > {
 
 
   public render() {
+    const ID = "id";
+    const TYPE = "type";
+    const TARGET = "target";
+    const info = this.state.content ? JSON.parse(this.state.content) : {};
+    const id = info[ID]; 
+    delete info[ID];
+    
     return (
       <div id="app-window">
         <CssBaseline />
@@ -71,8 +86,46 @@ export class App extends React.Component<{}, IState > {
               </ListItem>))
           }
           </List>
-          <article>
-            <pre>{this.state.content}</pre>
+          <article> 
+          {
+            this.state.selected 
+            ? (
+              <Card>
+                <CardHeader avatar={ <Avatar aria-label="Class" >C</Avatar>}
+                            title={this.state.selected.split('.').slice(0, -1).join('.')} />
+                <CardContent>
+                <Table style={{width: "100%"}}>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Attribute Name</TableCell>
+                      <TableCell align="right">Type</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {
+                      id
+                      ? (
+                        <TableRow key={ID}>
+                          <TableCell component="th" scope="row">{ID}</TableCell>
+                          <TableCell align="right">{id[TYPE] === "reference" ? id[TARGET] : id[TYPE]}</TableCell>
+                        </TableRow>
+                      ) 
+                      : null
+                    }
+                    {
+                      Object.keys(info).sort().map(name => (
+                        <TableRow key={name}>
+                          <TableCell component="th" scope="row">{name}</TableCell>
+                          <TableCell align="right">{info[name][TYPE] === "reference" ? info[name][TARGET] : info[name][TYPE]}</TableCell>
+                        </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+                </CardContent>
+              </Card>
+            ) 
+            : null
+          }
           </article>
         </main>
       </div>          
