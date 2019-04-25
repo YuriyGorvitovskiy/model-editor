@@ -119,10 +119,10 @@ export class App extends React.Component<{}, IState > {
                           <TableCell component="th" scope="row">{name}</TableCell>
                           <TableCell align="right">
                             {
-                              info[name][TYPE] === "reference" 
-                              ? <Button color="primary" onClick={()=>this.onSelectFile(info[name][TARGET] + ".json")}>
+                              info[name][TYPE] === "reference" && this.state.filenames.indexOf(info[name][TARGET] + ".json") >= 0
+                              ? <a href="#" onClick={()=>this.onSelectFile(info[name][TARGET] + ".json")}>
                                   {info[name][TARGET]}
-                                </Button> 
+                                </a> 
                               : info[name][TYPE]
                             }
                           </TableCell>
