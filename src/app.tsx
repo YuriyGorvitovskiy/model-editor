@@ -1,6 +1,7 @@
 
 import AppBar from '@material-ui/core/AppBar';
 import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -116,7 +117,15 @@ export class App extends React.Component<{}, IState > {
                       Object.keys(info).sort().map(name => (
                         <TableRow key={name}>
                           <TableCell component="th" scope="row">{name}</TableCell>
-                          <TableCell align="right">{info[name][TYPE] === "reference" ? info[name][TARGET] : info[name][TYPE]}</TableCell>
+                          <TableCell align="right">
+                            {
+                              info[name][TYPE] === "reference" 
+                              ? <Button color="primary" onClick={()=>this.onSelectFile(info[name][TARGET] + ".json")}>
+                                  {info[name][TARGET]}
+                                </Button> 
+                              : info[name][TYPE]
+                            }
+                          </TableCell>
                         </TableRow>
                     ))}
                   </TableBody>
