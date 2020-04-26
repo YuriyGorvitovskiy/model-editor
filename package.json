@@ -4,6 +4,7 @@
     "description": "",
     "main": "build/js/main.js",
     "scripts": {
+        "upgrade-dep": "npx npm-check-updates -u && npm install",
         "compile": "tsc",
         "format": "prettier --write \"src/**/*.ts\" .prettierrc jest.config.js package.json tsconfig.json tslint.json",
         "lint": "tslint -p tsconfig.json",
@@ -18,27 +19,27 @@
     "author": "Yuriy Gorvitovskiy",
     "license": "ISC",
     "devDependencies": {
-        "@types/jest": "23.3.12",
-        "@types/react": "16.8.14",
-        "@types/react-dom": "16.8.4",
-        "electron": "4.1.4",
-        "jest": "23.6.0",
-        "prettier": "1.15.3",
-        "ts-jest": "23.10.5",
-        "ts-loader": "5.3.3",
-        "ts-node": "7.0.1",
-        "tslint": "5.12.1",
-        "tslint-config-prettier": "1.17.0",
-        "typedoc": "0.14.2",
-        "typescript": "3.2.2",
-        "webpack": "4.28.4",
-        "webpack-cli": "3.2.1"
+        "@types/jest": "25.2.1",
+        "@types/react": "16.9.34",
+        "@types/react-dom": "16.9.6",
+        "electron": "8.2.3",
+        "jest": "25.4.0",
+        "prettier": "2.0.5",
+        "ts-jest": "25.4.0",
+        "ts-loader": "7.0.1",
+        "ts-node": "8.9.1",
+        "tslint": "6.1.1",
+        "tslint-config-prettier": "1.18.0",
+        "typedoc": "0.17.4",
+        "typescript": "3.8.3",
+        "webpack": "4.43.0",
+        "webpack-cli": "3.3.11"
     },
     "dependencies": {
-        "@material-ui/core": "3.9.3",
+        "@material-ui/core": "4.9.11",
         "state-glue": "../state-glue",
         "state-parts": "../state-parts",
-        "react": "16.8.6",
-        "react-dom": "16.8.6"
+        "react": "16.13.1",
+        "react-dom": "16.13.1"
     }
 }
