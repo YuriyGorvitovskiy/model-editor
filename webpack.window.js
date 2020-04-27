@@ -6,7 +6,6 @@ module.exports = {
         filename: "window-bundle.js",
         path: __dirname + "/build/window"
     },
-
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
         extensions: [".ts", ".tsx", ".js", ".json", ".css"]

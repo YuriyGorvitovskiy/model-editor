@@ -23,6 +23,7 @@
         "@material-ui/icons": "4.9.1",
         "react": "16.13.1",
         "react-dom": "16.13.1",
+        "state-glue": "file:../state-glue",
         "typeface-roboto": "0.0.75"
     },
     "devDependencies": {

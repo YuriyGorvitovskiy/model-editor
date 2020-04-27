@@ -1,9 +1,16 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, ipcMain } from "electron";
+import * as Glue from "state-glue";
 
 let win = null;
 const createWindow = () => {
     // Create the browser window.
-    win = new BrowserWindow({ width: 800, height: 600 });
+    win = new BrowserWindow({
+        width: 800,
+        height: 600,
+        webPreferences: {
+            nodeIntegration: true,
+        },
+    });
 
     // and load the index.html of the app.
     win.loadFile("build/window/window.html");
@@ -30,4 +37,8 @@ app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
         createWindow();
     }
+});
+
+ipcMain.on("resolve-context", (e, r) => {
+    e.reply(r.responseChannel, ["Class A", "Class B", "Class C"]);
 });
