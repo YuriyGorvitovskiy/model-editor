@@ -1,13 +1,17 @@
 {
     "compileOnSave": true,
     "compilerOptions": {
-        "declaration": true,
+        "declaration": false,
+        "isolatedModules": false,
         "jsx": "react",
+        "lib": ["dom", "es2020"],
         "module": "commonjs",
         "outDir": "./build/js",
+        "resolveJsonModule": true,
         "strict": false,
-        "target": "es2017"
+        "target": "es5",
+        "esModuleInterop": true
     },
-    "include": ["src/**/*.ts", "src/app.tsx"],
+    "include": ["src/**/*.ts"],
     "exclude": ["node_modules", "**/*.test.ts"]
 }

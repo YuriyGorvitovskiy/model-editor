@@ -1,10 +1,10 @@
 module.exports = {
     mode: "development",
-    target: "node",
-    entry: "./src/index.ts",
+    target: "electron-main",
+    entry: "./src/app/main.ts",
     output: {
-        filename: "state-glue.js",
-        path: __dirname + "/build"
+        filename: "app-bundle.js",
+        path: __dirname + "/build/app"
     },
 
     resolve: {
@@ -14,12 +14,13 @@ module.exports = {
 
     module: {
         rules: [
-            // All files with a '.ts' extension will be handled by 'ts-loader'.
+            // All files with a '.ts' and '.tsx' extensions will be handled by 'ts-loader'.
             {
-                test: /\.ts$/,
+                test: /\.(ts|tsx)$/,
                 use: 'ts-loader',
                 exclude: /node_modules/
-            }]
+            }
+        ]
     },
 
     // When importing a module whose path matches one of the following, just
