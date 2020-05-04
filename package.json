@@ -24,7 +24,9 @@
         "react": "16.13.1",
         "react-dom": "16.13.1",
         "state-glue": "file:../state-glue",
-        "typeface-roboto": "0.0.75"
+        "state-parts": "file:../state-parts",
+        "typeface-roboto": "0.0.75",
+        "uuid": "^7.0.3"
     },
     "devDependencies": {
         "@types/jest": "25.2.1",

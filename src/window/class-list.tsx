@@ -1,9 +1,10 @@
 import React from 'react';
-import {ipcRenderer} from 'electron';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import * as Glue from 'state-glue';
+
+import * as Channel from '../util/channel';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -34,24 +35,14 @@ const context: Glue.ContextDeclaration<Context> = {
         }]
     }
 }
-const requestList = async(): Promise<string[]> => {
-    const responseChannel = "context-resolved-for-" + new Date().getTime();
-    ipcRenderer.send("resolve-context", {
-        context,
-        params: {},
-        responseChannel
-    });
-    return new Promise(resolve => {
-        ipcRenderer.once(responseChannel, (event, response) => resolve(response));
-    });
-}
 
 export default () =>  {
     const [list, setList] = React.useState([] as string[]);
 
     const processList = async () => {
-        setList(await requestList());
+        setList((await Channel.resolveContext({}, context)).classes);
     };
+
     React.useEffect(() => {
         processList();
     }, []);

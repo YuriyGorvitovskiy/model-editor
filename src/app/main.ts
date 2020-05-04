@@ -40,5 +40,5 @@ app.on("activate", () => {
 });
 
 ipcMain.on("resolve-context", (e, r) => {
-    e.reply(r.responseChannel, ["Class A", "Class B", "Class C"]);
+    e.reply(r.responseChannel, { classes: ["Class A", "Class B", "Class C"] });
 });
